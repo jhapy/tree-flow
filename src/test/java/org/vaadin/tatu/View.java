@@ -42,7 +42,8 @@ public class View extends Div {
         
         // end-source-example
         tree.setId("treegridbasic");
-
+        tree.setHeightByRows(true);
+        setSizeFull();
         add(withTreeToggleButtons(
                 departmentData.getRootDepartments().get(0), tree, message));
     }

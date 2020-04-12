@@ -9,6 +9,9 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Focusable;
 import com.vaadin.flow.component.HasComponents;
+import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.Grid.SelectionMode;
 import com.vaadin.flow.component.grid.GridMultiSelectionModel;
@@ -28,9 +31,11 @@ import com.vaadin.flow.data.provider.hierarchy.HierarchicalDataProvider;
 import com.vaadin.flow.data.provider.hierarchy.TreeData;
 import com.vaadin.flow.data.provider.hierarchy.TreeDataProvider;
 import com.vaadin.flow.data.renderer.TemplateRenderer;
+import com.vaadin.flow.data.selection.MultiSelect;
 import com.vaadin.flow.data.selection.SelectionListener;
 import com.vaadin.flow.data.selection.SelectionModel;
 import com.vaadin.flow.data.selection.SingleSelect;
+import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.function.SerializableComparator;
 import com.vaadin.flow.function.SerializableFunction;
 import com.vaadin.flow.function.SerializablePredicate;
@@ -47,7 +52,7 @@ import com.vaadin.flow.shared.Registration;
  *            the data type
  */
 public class Tree<T> extends Composite<Div>
-        implements HasHierarchicalDataProvider<T>, Focusable, HasComponents {
+        implements HasHierarchicalDataProvider<T>, Focusable, HasComponents, HasSize, HasElement {
 
 	private class CustomizedTreeGrid<T> extends TreeGrid<T> {
 
@@ -121,7 +126,7 @@ public class Tree<T> extends Composite<Div>
 				column = addColumn(TemplateRenderer
 	                .<T> of("<vaadin-grid-tree-toggle title='[[item.title]]'"
 	                        + "leaf='[[item.leaf]]' expanded='{{expanded}}' level='[[level]]'>"
-	                        + "<iron-icon icon='vaadin:[[item.icon]]' style='padding-right: 10px'></iron-icon>" 
+	                        + "<iron-icon icon='vaadin:[[item.icon]]' style='height: 15px; padding-right: 10px'></iron-icon>" 
 	                		+ "[[item.name]]"
 	                        + "</vaadin-grid-tree-toggle>")
 	                .withProperty("leaf",
@@ -174,9 +179,8 @@ public class Tree<T> extends Composite<Div>
         treeGrid.setSelectionMode(SelectionMode.SINGLE);
         treeGrid.addThemeVariants(GridVariant.LUMO_NO_ROW_BORDERS);
         
-        treeGrid.setWidth("100%");
-        treeGrid.setHeightByRows(true);
-
+        treeGrid.setSizeFull();
+        treeGrid.addClassName("tree");
         add(treeGrid);
     }
 
@@ -426,6 +430,17 @@ public class Tree<T> extends Composite<Div>
     }
 
     /**
+     * Use this tree as a multi select in Binder. Throws
+     * {@link IllegalStateException} if the tree is not using
+     * {@link SelectionMode#MULTI}.
+     *
+     * @return the single select wrapper that can be used in binder
+     */
+    public MultiSelect<Grid<T>, T> asMultiSelect() {
+        return treeGrid.asMultiSelect();
+    }
+
+    /**
      * Use this tree as a single select in Binder. Throws
      * {@link IllegalStateException} if the tree is not using
      * {@link SelectionMode#SINGLE}.
@@ -660,5 +675,9 @@ public class Tree<T> extends Composite<Div>
     @Override
     public void focus() {
         treeGrid.focus();
+    }
+
+    public void setHeightByRows(boolean heightByRows) {
+    	treeGrid.setHeightByRows(heightByRows);
     }
 }

@@ -1,9 +1,22 @@
 [![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/tree)
-[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/gridfastnavigation-add-on.svg)](https://vaadin.com/directory/component/tree)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/tree.svg)](https://vaadin.com/directory/component/tree)
 
 # Tree
 
 Vaadin 14 Java version of Tree component
+
+## Release notes
+
+### Version 1.1.0
+
+- Added missing asMultiSelect() method
+- Added setSizeByRows(..)
+- Fixed sizing logic
+
+### Version 1.0.0
+
+- Initial version
+
 
 ## Development instructions
 
