@@ -1,0 +1,16 @@
+# Maven
+log/
+target/
+
+*.iml
+
+# Javamelody & Glowroot
+javamelody/
+glowroot/data/
+glowroot/logs/
+glowroot/tmp/
+
+node_modules/
+/webpack.generated.js
+outdated-dependencies.txt
+cloudbuild.yaml
