@@ -180,7 +180,7 @@ public class Tree<T> extends Composite<Div>
     	this.valueProvider = valueProvider;
         treeGrid.setHierarchyColumn(valueProvider, iconProvider, titleProvider);
         treeGrid.setSelectionMode(SelectionMode.SINGLE);
-        treeGrid.addThemeVariants(GridVariant.LUMO_NO_ROW_BORDERS);
+        treeGrid.addThemeVariants(GridVariant.LUMO_NO_ROW_BORDERS, GridVariant.LUMO_NO_BORDER);
 
         treeGrid.setSizeFull();
         treeGrid.addClassName("tree");
