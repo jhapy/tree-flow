@@ -25,9 +25,11 @@ jobs:
     - name: Build with Maven
       run: mvn -Dmaven.test.skip -s .settings.xml -Dmaven.javadoc.skip -Dossrh_username=${{secrets.ossrh_username}} -Dossrh_password=${{secrets.ossrh_password}} --file pom.xml deploy
     - name: Slack Success
-      if: always()
-      uses: kpritam/slack-job-status-action@v1
+      uses: 8398a7/action-slack@v3
       with:
-        job-status: ${{ job.status }}
-        slack-bot-token: ${{ secrets.slack_bot_token }}
-        channel: framework-builds
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: always()
