@@ -17,3 +17,5 @@ cloudbuild.yaml
 package-lock.json
 package.json
 webpack.config.js
+/pnpm-lock.yaml
+/pnpmfile.js
