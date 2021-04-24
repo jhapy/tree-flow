@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jhapy</groupId>
     <artifactId>tree-flow</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
-    <name>tree</name>
+    <version>3.0.0-SNAPSHOT</version>
+    <name>Tree Flow - Plugin</name>
     <description>Integration of paper-slider for Vaadin platform</description>
 
     <properties>
@@ -90,7 +93,9 @@
         <pluginRepository>
             <id>vaadin-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-            <releases><enabled>false</enabled></releases>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </pluginRepository>
     </pluginRepositories>
 
@@ -275,6 +280,9 @@
         <!-- Run (demo) in production mode-->
         <profile>
             <id>production</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <vaadin.productionMode>true</vaadin.productionMode>
             </properties>
@@ -401,10 +409,12 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                                    <outputDirectory>${project.build.outputDirectory}
+                                    </outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${project.build.testOutputDirectory}</directory>
+                                            <directory>${project.build.testOutputDirectory}
+                                            </directory>
                                         </resource>
                                     </resources>
                                 </configuration>
