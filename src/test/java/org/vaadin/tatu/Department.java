@@ -1,54 +1,55 @@
 package org.vaadin.tatu;
 
 public class Department {
-    private int id;
-    private String name;
-    private String manager;
-    private Department parent;
 
-    public Department(int id, String name, Department parent, String manager) {
-        this.id = id;
-        this.name = name;
-        this.manager = manager;
-        this.parent = parent;
-    }
+  private int id;
+  private String name;
+  private String manager;
+  private Department parent;
 
-    public int getId() {
-        return id;
-    }
+  public Department(int id, String name, Department parent, String manager) {
+    this.id = id;
+    this.name = name;
+    this.manager = manager;
+    this.parent = parent;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getManager() {
-        return manager;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
+  public String getManager() {
+    return manager;
+  }
 
-    public Department getParent() {
-        return parent;
-    }
+  public void setManager(String manager) {
+    this.manager = manager;
+  }
 
-    public void setParent(Department parent) {
-        this.parent = parent;
-    }
+  public Department getParent() {
+    return parent;
+  }
+
+  public void setParent(Department parent) {
+    this.parent = parent;
+  }
 
 
-    @Override
-    public String toString() {
-        return name;
-    }
+  @Override
+  public String toString() {
+    return name;
+  }
 }
 
