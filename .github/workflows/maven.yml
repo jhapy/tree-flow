@@ -26,11 +26,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-tree-flow
       - name: Configure GPG Key
-          run: |
-            echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
-          env:
-            GPG_SIGNING_KEY:
-              ${{ secrets.GPG_SIGNING_KEY }}
+        run: |
+          echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+        env:
+          GPG_SIGNING_KEY:
+            ${{ secrets.GPG_SIGNING_KEY }}
       - name: Build with Maven
         run: mvn -Dmaven.test.skip -s .settings.xml -Dmaven.javadoc.skip -Dossrh_username=${{secrets.ossrh_username}} -Dossrh_password=${{secrets.ossrh_password}} --file pom.xml deploy
       - name: Workflow Dispatch to app-frontend-application repository
